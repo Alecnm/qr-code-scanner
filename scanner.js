@@ -23,16 +23,18 @@ function initQRMethod() {
     // }).catch(err => {
     //   //console.error(err);
     // });
-    const qrCodeSuccessCallback = (decodedText, decodedResult) => {
-  
-      let urlObject = new URL(decodedText);
-  
-      if (urlObject.searchParams.get("token") && urlObject.searchParams.get("u_id") && urlObject.searchParams.get("onlyqr")) {
-        showLoading(decodedText);
-        //console.log(decodedText);
-      } else {
-        qrNotValid();
-        //console.log("QR code is not valid"); // TODO - Show error message to user that QR code is not valid and try again
-      }
-    };
+    
   }
+
+  const qrCodeSuccessCallback = (decodedText, decodedResult) => {
+  
+    let urlObject = new URL(decodedText);
+
+    if (urlObject.searchParams.get("token") && urlObject.searchParams.get("u_id") && urlObject.searchParams.get("onlyqr")) {
+      showLoading(decodedText);
+      //console.log(decodedText);
+    } else {
+      qrNotValid();
+      //console.log("QR code is not valid"); // TODO - Show error message to user that QR code is not valid and try again
+    }
+  };
