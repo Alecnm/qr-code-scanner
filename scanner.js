@@ -4,7 +4,7 @@ function initQRMethod() {
     html5QrCode = new Html5Qrcode("videoScanQR");
     const config = { fps: 10, qrbox: { width: 250, height: 250 } };
   
-    html5QrCode.start({ facingMode: { exact: "environment" } }, config);
+    html5QrCode.start({ facingMode: { exact: "environment" } }, config, () => {});
     // Html5Qrcode.getCameras().then(devices => {
     //   /**
     //    * devices would be an array of objects of type:
