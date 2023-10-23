@@ -1,4 +1,4 @@
-
+var html5QrCode = null;
 function initQRMethod() {
 
     html5QrCode = new Html5Qrcode("videoScanQR");
