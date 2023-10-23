@@ -9,7 +9,7 @@ function initQRMethod() {
          * { id: "id", label: "label" }
          */
         console.log(devices);
-        devices.array.forEach(device => {
+        devices.forEach(device => {
             alert(device.label);
         });
       }).catch(err => {
