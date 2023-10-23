@@ -8,14 +8,7 @@ function initQRMethod() {
          * devices would be an array of objects of type:
          * { id: "id", label: "label" }
          */
-        if (devices && devices.length) {
-
-            for (let index = 0; index < devices.length; index++) {
-                labels += devices[index].label + " ----- ";
-            }
-          var cameraId = devices[0].id;
-          // .. use this to start scanning.
-        }
+        console.log(devices);
       }).catch(err => {
         // handle err
       });
