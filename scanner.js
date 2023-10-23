@@ -8,6 +8,6 @@ function initQRMethod() {
     const config = { fps: 10, qrbox: { width: 250, height: 250 } };
     
     // If you want to prefer front camera
-    html5QrCode.start({ facingMode: "environment" }, config, qrCodeSuccessCallback);
+    html5QrCode.start({ facingMode: { exact: "environment"} }, config, qrCodeSuccessCallback);
   }
 
