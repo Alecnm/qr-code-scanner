@@ -9,6 +9,9 @@ function initQRMethod() {
          * { id: "id", label: "label" }
          */
         console.log(devices);
+        devices.array.forEach(device => {
+            alert(device.label);
+        });
       }).catch(err => {
         // handle err
       });
