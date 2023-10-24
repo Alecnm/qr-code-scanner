@@ -41,7 +41,7 @@ if (navigator.mediaDevices && navigator.mediaDevices.enumerateDevices) {
           cameras.forEach(camera => {
             getCameraResolution(camera.deviceId, function(resolution) {
               alert('Camera: ' + camera.label);
-              alert( resolution);
+              alert(JSON.stringify(resolution));
    
               if (resolution.width * resolution.height > maxResolution) {
                 maxResolution = resolution.width * resolution.height;
