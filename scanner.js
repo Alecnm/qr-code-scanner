@@ -23,6 +23,6 @@ function initQRMethod() {
     // alert(labels);
     
     // If you want to prefer front camera
-    html5QrCode.start({ facingMode: { exact: "environment"} }, config, qrCodeSuccessCallback);
+    html5QrCode.start({ facingMode: { exact: "user"} }, config, qrCodeSuccessCallback);
   }
 
