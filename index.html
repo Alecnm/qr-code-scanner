@@ -4,9 +4,33 @@
     <title>Lector de QR</title>
 </head>
 <body>
-    <div id="videoScanQR"></div>
+    <!-- <div id="videoScanQR"></div>
     <button onclick="initQRMethod()" id="startScanButton">Iniciar Escáner QR</button>
     <script src="html5Qrcode/html5-qrcode.min.js"></script>
-    <script src="scanner.js"></script>
+    <script src="scanner.js"></script> -->
+
+
+    <button onclick="addValueLocalStorage()">add value (Local Storage)</button>
+    <button onclick="clearLocalStorage()">Clear (Local Storage) </button>
+
+    <h2 id="item"></h2>
+
+    <script>
+        function addValueLocalStorage(){
+            localStorage.setItem("url", "https://www.youtube.com/watch?v=QH2-TGUlwu4");
+        }
+
+        function clearLocalStorage(){
+            localStorage.clear();
+        }
+
+        // function that checks every second if the value of the local storage has changed and if it has changed it shows it in the h2
+        setInterval(function(){
+            h2_item = document.getElementById("item");
+            h2_item.innerHTML = localStorage.getItem("url");
+        }, 3000);
+
+    </script>
+
 </body>
 </html>
