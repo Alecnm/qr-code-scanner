@@ -12,7 +12,7 @@
     <input name="value" id="storage" type="text">
     <button onclick="addValueLocalStorage()">add value (Mobile Storage)</button>
     <button onclick="showLocalStorage()">Show value (Mobile Storage) </button>
-    <a href="second.html"><button>Go to Second Page</button></a>
+    <a href="https://development.investmentdominator.com/rei-crm/crm-0000X/my/index.php"><button>Go to Second Page</button></a>
 
     <h2 id="item"></h2>
 
@@ -37,6 +37,65 @@
                 h2_item.innerHTML = 'nothing...';
             }
             });
+        }
+
+        if (typeof median !== 'undefined') {
+            alert('Median defined');
+            let token = checkIfTokenExists();
+            let lastUrl = checkIfLastUrlExists();
+
+            if (token && lastUrl) {
+                let url = getUrlUntilMy(lastUrl);
+                if(url){
+                    //encode lastUrl to pass it as a get param
+                    lastUrlEncoded = encodeURIComponent(lastUrl);
+                    location.replace(url + 'login.php' + '?mobileLoginToken=' + token + '&lastUrl=' + lastUrlEncoded);
+                }
+            }
+
+
+            function getUrlUntilMy(urlParam) {
+            // get the current URL
+            var url = urlParam;
+            // find the index of the first occurrence of /my/
+            var index = url.indexOf("/my/");
+            // if /my/ is found, slice the URL from the beginning until the end of /my/
+            if (index !== -1) {
+                return url.slice(0, index + 4);
+            } else {
+                return null;
+            }
+        }
+
+
+        /**
+         * Check if the lastUrl exists in the local data store and return it
+         */
+        function checkIfLastUrlExists() {
+            return getDataFromStorage('lastUrl')
+        }
+
+        /**
+         * Check if the token exists in the local data store and return it
+         */
+        function checkIfTokenExists() {
+            return getDataFromStorage('mobileLoginToken')
+        }
+
+
+
+        function getDataFromStorage(dataKey) {
+            median.storage.app.get({
+                key: dataKey
+            }).then(function (result) {
+            if (result.data) {
+                return result.data;
+            }else{
+                return null;
+            }
+            });
+        }
+
         }
 
     </script>
