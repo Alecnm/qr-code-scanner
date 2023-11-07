@@ -9,27 +9,35 @@
     <script src="html5Qrcode/html5-qrcode.min.js"></script>
     <script src="scanner.js"></script> -->
 
-
-    <button onclick="addValueLocalStorage()">add value (Local Storage)</button>
-    <button onclick="clearLocalStorage()">Clear (Local Storage) </button>
+    <input name="value" id="storage" type="text">
+    <button onclick="addValueLocalStorage()">add value (Mobile Storage)</button>
+    <button onclick="showLocalStorage()">Show value (Mobile Storage) </button>
     <a href="second.html"><button>Go to Second Page</button></a>
 
     <h2 id="item"></h2>
 
     <script>
         function addValueLocalStorage(){
-            localStorage.setItem("url", "https://www.youtube.com/watch?v=QH2-TGUlwu4");
+            let value = document.getElementById('storage').value;
+            median.storage.app.set({
+                key: 'data',
+                value: value,
+		    });
+
         }
 
-        function clearLocalStorage(){
-            localStorage.clear();
+        function showLocalStorage(){
+            let h2_item = document.getElementById("item");
+            median.storage.app.get({
+                key: 'data'
+            }).then(function (result) {
+            if (result.data) {
+                h2_item.innerHTML = result.data;
+            }else{
+                h2_item.innerHTML = 'nothing...';
+            }
+            });
         }
-
-        // function that checks every second if the value of the local storage has changed and if it has changed it shows it in the h2
-        setInterval(function(){
-            h2_item = document.getElementById("item");
-            h2_item.innerHTML = localStorage.getItem("url");
-        }, 3000);
 
     </script>
 
