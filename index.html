@@ -12,11 +12,14 @@
     <input name="value" id="storage" type="text">
     <button onclick="addValueLocalStorage()">add value (Mobile Storage)</button>
     <button onclick="showLocalStorage()">Show value (Mobile Storage) </button>
-    <a href="https://development.investmentdominator.com/rei-crm/crm-0000X/my/index.php"><button>Go to Second Page</button></a>
+    <button onclick="goDev()">Go to Second Page</button>
 
     <h2 id="item"></h2>
 
     <script>
+        function goDev(){
+            location.replace("https://development.investmentdominator.com/rei-crm/crm-0000X/my/index.php");
+        }
         function addValueLocalStorage(){
             let value = document.getElementById('storage').value;
             median.storage.app.set({
